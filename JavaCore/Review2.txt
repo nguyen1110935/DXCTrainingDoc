@@ -1,0 +1,341 @@
+1. Which is correct name?
+
+    _variablename
+    _3variable
+    $testvariable
+	a*b
+    8example
+    exa+ple	
+    VariableTest
+    variabletest
+    this_is_a_variable_name_that_is_long_but_still_valid_because_of_the_underscores
+    variable test
+    this_long_variable_name_is_not_valid_because_of_this-hyphen
+
+2. What's wrong with the following program?
+class X
+{
+    //Class X Members
+}
+ 
+class Y
+{
+    //Class Y Members
+}
+ 
+class Z extends X, Y
+{
+    //Class Z Members
+}
+
+3. What will be the output of this program?
+class A
+{
+    int i = 10;
+}
+ 
+class B extends A
+{
+    int i = 20;
+}
+ 
+public class MainClass
+{
+    public static void main(String[] args)
+    {
+        A a = new B(); 
+        System.out.println(a.i);
+    }
+}
+
+4. What's wrong with the following program?
+package main;
+public class ClassA {
+    private int privateVar;
+    public int publicVar;
+    int defaultVar;
+}
+a)
+package main;
+public class ClassB {
+    public static void main(String[] args) {
+        ClassA a = new ClassA();
+        int v1 = a.publicVar;   // Works
+        int v2 = a.defaultVar;  // Works
+        int v3 = a.privateVar;  // Doesn't work
+    }
+}
+b)
+package other;
+public class ClassC {
+    public static void main(String[] args) {
+        ClassA a = new ClassA();
+        int v1 = a.publicVar;   // Works
+        int v2 = a.defaultVar;  // Doesn't work
+        int v3 = a.privateVar;  // Doesn't work
+    }
+}
+
+5. What's wrong with the following program?
+class Test {
+  int i;
+} 
+class Main {
+   public static void main(String args[]) { 
+     Test t; 
+     System.out.println(t.i); 
+}
+
+6. Output of following program?
+class Main { 
+    public static void main(String args[]) {    
+        System.out.println(fun()); 
+    }  
+   
+    int fun() 
+    { 
+      return 20; 
+    } 
+} 
+(A) 20
+(B)  compiler error
+(C) 0
+(D) garbage balue
+
+
+7. Output of following program?
+class intWrap { 
+   int x; 
+}  
+public class Main {  
+    public static void main(String[] args) { 
+       intWrap i = new intWrap(); 
+       i.x = 10; 
+       intWrap j = new intWrap(); 
+       j.x = 20; 
+       swap(i, j); 
+       System.out.println("i.x = " + i.x + ", j.x = " + j.x); 
+    }  
+    public static void swap(intWrap i, intWrap j) { 
+       int temp = i.x; 
+       i.x = j.x; 
+       j.x = temp; 
+    } 
+} 
+(A)  i.x = 20, j.x = 10
+(B) i.x = 10, j.x = 20
+(C) i.x = 10, j.x = 10
+(D) i.x = 20, j.x = 20
+
+
+8. Output of following program?
+class Test 
+{ 
+    int a = 1; 
+    int b = 2; 
+  
+    Test func(Test obj) 
+    { 
+        Test obj3 = new Test(); 
+        obj3 = obj; 
+        obj3.a = obj.a++ + ++obj.b; 
+        obj.b = obj.b; 
+        return obj3; 
+    } 
+  
+    public static void main(String[] args) 
+    { 
+        Test obj1 = new Test(); 
+        Test obj2 = obj1.func(obj1); 
+  
+        System.out.println("obj1.a = " + obj1.a + "  obj1.b = " + obj1.b); 
+        System.out.println("obj2.a = " + obj2.a + "  obj1.b = " + obj2.b); 
+  
+    } 
+} 
+(A)
+obj1.a = 1  obj1.b = 2
+obj2.a = 4  obj2.b = 3
+(B)
+
+obj1.a = 4  obj1.b = 3
+obj2.a = 4  obj2.b = 3
+(C) Compilation error
+
+
+
+9. Output of following program?
+class Test { 
+    public static void main(String args[])  { 
+       System.out.println(10*20 + "GeeksQuiz"); 
+       System.out.println("GeeksQuiz" + 10*20); 
+   }  
+}
+
+
+10. Output of following program?
+class First 
+{   
+    void display() 
+    { 
+        System.out.println("Inside First"); 
+    } 
+}   
+class Second extends First 
+{   
+    void display() 
+    { 
+        System.out.println("Inside Second"); 
+    } 
+}   
+class Test 
+{   
+    public static void main(String[] args) 
+    { 
+        First obj1 =  new First(); 
+        Second obj2 =  new Second(); 
+  
+        First ref; 
+        ref = obj1; 
+        ref.display(); 
+  
+        ref = obj2; 
+        ref.display(); 
+    } 
+} 
+(A) Compilation error
+(B)
+
+Inside First
+Inside Second
+(C)
+Inside First
+Inside First
+(D) Runtime error
+
+
+11. Output of following program?
+class Super {
+    String s; 
+    public Super(){
+    	System.out.println("Super");
+    }
+}
+ 
+public class Sub extends Super { 
+    public Sub(){
+    	System.out.println("Sub");
+    } 
+    public static void main(String[] args){
+    	Sub s = new Sub();
+    }
+}
+
+12. What is the out put of following program
+	Integer a = 1;
+	Integer b = a;
+	b =2;
+	System.out.println(a);
+	
+13. What is the out put of following program
+a)
+	int i =2;
+	switch (i) {
+		default:
+			System.out.println("default");
+			break;	
+		case 1:
+			System.out.println(i);
+		case 2:
+			System.out.println(i);
+		case 3:
+			System.out.println(i);
+			break;
+	}
+	
+b)
+	int i =4;
+	switch (i) {
+		default:
+			System.out.println("default");
+			break;	
+		case 1:
+			System.out.println(i);
+		case 2:
+			System.out.println(i);
+		case 3:
+			System.out.println(i);
+			break;
+	}
+	
+14. What is the out put of following program
+	for(int i=0,j=1;i<5; ++i,j++) {
+		System.out.println(i +":"+j);
+	}
+	
+15. What is the out put of following program
+	int a = 5;
+	int b = 0;
+	while(a >= b) {
+		if(a%2 == 0) {
+			a--;
+			continue;
+		}
+		System.out.println(a + ":" + b);
+		a--;
+		b++;
+	}
+	
+16. What is the out put of following program
+a)
+class Gfg  
+{ 
+    static final int CAPACITY = 4;       
+    public static void main(String args[]) 
+    { 
+        CAPACITY = 5; 
+    } 
+} 
+b)
+class Bike {
+    final void run() {
+        System.out.println("running");
+    }
+}
+
+public class SH extends Bike {
+    void run() {
+        System.out.println("Chay");
+    }
+ 
+    public static void main(String args[]) {
+        SH sh = new SH();
+        sh.run();
+    }
+}
+
+17. What is the out put of following program
+
+	String a1 = new String("A");
+	String b1 = new String ("A");
+	System.out.println(a1 == b1);
+	System.out.println(a1.equals(b1));
+
+18. What is the out put of following program?
+public class A {
+	public static void staticMethod() {
+		System.out.println("A");
+	}
+}
+
+public class B extends A{
+	public static void staticMethod() {
+		System.out.println("A");
+	}
+	public static void main(String args[]) {
+        A a = new B();
+        a.staticMethod();
+		B b = new B();
+        b.staticMethod();
+    }
+}

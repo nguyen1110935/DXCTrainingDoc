@@ -1,0 +1,68 @@
+1. Collection
+Basically, you decide to choose a collection by answering the following questions:
+- Does it allow duplicate elements?
+- Does it accept null?
+- Does it allow accessing elements by index?
+
+
+2. Output of following program?
+List a = new ArrayList();
+a.add("Hello All");
+a.add("Hello World"); 
+a.add(new Integer(1));
+a.add(new Integer(3));
+		
+
+3. Output of following program?
+Set<Integer> ss = new TreeSet<Integer>();
+ss.add(2);
+ss.add(1);
+ss.add(3);
+System.out.println(ss);
+
+
+4. Output of following program?
+
+List<String> lst = new ArrayList<String>(2);
+lst.add("2");
+lst.add("1");
+lst.add("3");
+System.out.println(lst);
+
+
+5. Output of following program?
+Collection aa= new ArrayList<>();
+aa.add("2");
+aa.add("1");
+aa.add("3");
+a)
+System.out.println(aa);
+
+b)
+for (Object object : aa) {
+	aa.remove(object);
+}
+System.out.println("Size:"+aa.size());
+
+c)
+Iterator i = aa.iterator();
+while(i.hasNext()) {
+	Object obj = i.next();
+	i.remove();
+}
+System.out.println("Size:"+aa.size());
+
+
+6. Output of following program?
+
+	Map<Integer, Integer> maps = new HashMap/LinkedHashMap/TreeMap/Hashtable<Integer, Integer>();
+	maps.put(2, 2);
+	maps.put(3, 3);
+	maps.put(1, 1);
+	maps.put(2, 4);
+	
+	for (Entry<Integer, Integer> entry : maps.entrySet()) {
+		System.out.println(entry.getKey());
+	}
+
+
