@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="libraries/scripts/1.6.4/angular.min.js"></script>
+    </head>
+    <body ng-app='form-example'>
+        <div ng-controller="Controller">
+            <form name="form" class="css-form" novalidate>
+                Name: <input type="text" ng-model="user.name" name="uName" required/> <br/>
+                Email:<input type="email" ng-model="user.email" name="uEmail" required/> <br/>
+                <div ng-show="form.uEmail.$dirty && form.uEmail.$invalid"> Invalid:
+                    <span ng-show = "form.uEmail.$error.required">Tell us your email</span>
+                    <span ng-show = "form.uEmail.$error.email">This is not valid email</span>
+                </div>
+        
+               Gender: <input type="radio" ng-model="user.gender" value="male" /> Male
+                <input type="radio" ng-model="user.gender" value="female"/>female <br />
+                <input type="checkbox" ng-model="user.agree" name="userAgree" required/> I agree <input ng-show="user.agree" type="text" ng-model="user.agreeSign" required/> <br />
+        
+                <div ng-show="!user.agree || !user.agreeSign"> Please agree and sign </div>
+                <button ng-click="reset()" ng-disabled="isUnchanged(user)"> RESET</button>
+                <button ng-click="update(user)" ng-disabled="form.&invalid || isUnchanged(user)"> SAVE</button>
+            </form>
+        </div>
+        <script type="text/javascript">
+            var app = angular.module('form-example', [])
+            .controller("Controller", function Controller ($scope){
+                $scope.master = {};
+                $scope.update = function(user){
+                    $scope.master = angular.copy(user);
+                };
+            
+                $scope.reset = function (){
+                    $scope.user = angular.copy($scope.master);
+                }; 
+                
+                $scope.isUnchanged = function (user){
+                    return angular.equals(user, $scope.master);
+                };
+                
+                $scope.reset();
+            });
+            
+        </script>
+        <style type="text/css">
+            .css-form input.ng-invalid.ng-dirty {
+                background-color: #FA787E;
+            }
+            .css-form input.ng-valid.ng-dirty {
+                background-color: #78FA89;
+            }
+        </style>
+    </body>
+</html>

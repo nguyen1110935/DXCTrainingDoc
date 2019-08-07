@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <tile>Hello world</title>
+        <script src="libraries/scripts/1.6.4/angular.min.js"> </script>
+    </head>
+
+    <body ng-app="scopeInheritance">
+        <div class="spicy">
+            <div ng-controller="MainController">
+                <p> Good {{timeOfDay}} {{name}}!</p>
+                <div ng-controller="ChildController">
+                    <p> Good {{timeOfDay}} {{name}} !</p>
+                    <div ng-controller="GrandChildController">
+                        <p> Good {{timeOfDay}} {{name}}!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script> 
+            var app = angular.module('scopeInheritance', []);
+            app.controller('MainController',  ['$scope', function($scope){
+                $scope.timeOfDay = 'morning';
+                $scope.name = 'Nikki';
+            }]);
+            
+            app.controller('ChildController',  ['$scope', function($scope){
+                $scope.name = 'Marttie';
+            }]);
+            
+            app.controller('GrandChildController',  ['$scope', function($scope){
+                $scope.timeOfDay = 'evening';
+                $scope.name = 'Gingerbread Baby';
+            }]);
+        </script>
+        
+        <style>
+            div.spicy div {
+                padding: 10px;
+                border: solid 2px blue;
+            }
+        </style>
+    </body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <tile>scope event</title>
+        <script src="libraries/scripts/1.6.4/angular.min.js"> </script>
+    </head>
+
+    <body ng-app="scopeEvent">
+        <div class="spicy">
+            <div ng-controller="MainController">
+                Parent scope <tt>MyEvent</tt> count:{{count}} 
+                <div ng-controller="ChildController">
+                    <button ng-click="$emit('MyEvent')">$emit('MyEvent')</button>
+                    <button ng-click="$broadcast('MyEvent')">$broadcast('MyEvent')</button>
+                    Middle scope <tt>MyEvent</tt> count:{{count}} 
+                    <div ng-controller="GrandChildController"> 
+                        Leaf scope <tt>MyEvent</tt> count:{{count}} 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script> 
+            var app = angular.module('scopeEvent', []);
+            app.controller('MainController', ['$scope', function ($scope){
+                $scope.count = 0;
+                $scope.$on('MyEvent', function(){
+                    $scope.count++;
+                });
+            }]);
+                
+            app.controller('ChildController', ['$scope', function ($scope){
+                $scope.count = 0;
+                $scope.$on('MyEvent', function(){
+                    $scope.count++;
+                });
+            }]);
+            
+            app.controller('GrandChildController', ['$scope', function ($scope){
+                $scope.count = 0;
+                $scope.$on('MyEvent', function(){
+                    $scope.count++;
+                });
+            }]);
+                
+        </script>
+        <style>
+            div.spicy div {
+                padding: 10px;
+                border: solid 2px blue;
+            }
+        </style>
+    </body>
+</html>

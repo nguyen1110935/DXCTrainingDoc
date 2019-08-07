@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="libraries/scripts/1.6.4/angular.min.js"></script>
+    </head>
+    <body ng-app='docsIsolateScopeDirective'>
+        <div ng-controller="MyController">
+            <my-customer man="naomi"></my-customer> <hr>
+            <my-customer man="igor"></my-customer>
+        </div>
+        <script type="text/javascript">
+            var myApp = angular.module('docsIsolateScopeDirective',[]);
+            myApp.controller('MyController',[ '$scope', function ($scope){
+            $scope.naomi = {name:'Naomi', address:'1600 Amphotheater'};
+            $scope.igor = {name:'Igor', address:'123 Somewhere'};
+            }])
+            .directive('myCustomer', function (){
+                return {
+                    restrict: 'E',
+                    scope: {
+                        customerInfo: '=man'
+                    },
+                    template: '<h1>Name: {{customerInfo.name}} Adress: {{customerInfo.address}} </h1>'
+                };
+            });
+        </script>>
+    </body>
+</html>

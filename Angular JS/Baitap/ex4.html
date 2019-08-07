@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <tile>scope watch</title>
+        <script src="libraries/scripts/1.6.4/angular.min.js"> </script>
+    </head>
+
+    <body ng-app="messageApp">
+        <div ng-controller="HelloController">
+            {{text}} <br>
+        </div>
+
+        <script> 
+            var app = angular.module('messageApp', []);
+            app.controller('HelloController', function HelloController ($scope, $timeout){
+                $scope.startedTime = new Date();
+                $scope.text = "Hello ";
+                $scope.elapsed = 0;
+                
+                $scope.$watch('elapsed', function (){
+                    if ($scope.elapsed > 0)
+                        $scope.text = $scope.text + "World";
+                });
+                $timeout(function(){
+                    var delta = (new Date().getTime() - $scope.startedTime.getTime());
+                    $scope.elapsed = Math.round(delta/1000);
+                    
+                }, 3000);
+            });
+        </script>
+    </body>
+</html>
