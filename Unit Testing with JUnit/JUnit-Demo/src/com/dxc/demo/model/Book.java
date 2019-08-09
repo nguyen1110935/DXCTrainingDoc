@@ -11,4 +11,8 @@ public class Book {
 	public String getTitle() {
 		return title;
 	}
+	
+	public void upperCaseTitle() {
+		title = title.toUpperCase();
+	}
 }
