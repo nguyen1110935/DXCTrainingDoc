@@ -1,0 +1,18 @@
+<div class="panel row" ng-controller="bookCtrl" ng-hide="data.error">
+    <div class="col-xs-3 well">
+
+        <!--            Categories display here.-->
+        <a ng-click="selectCategory()" class="btn btn-block btn-lg">Home</a>
+        <a ng-repeat="item in data.books | orderBy: 'category' | unique: 'category'" ng-click="selectCategory(item)" class="btn btn-default btn-block btn-lg" ng-class = "getCategoryClass(item)">{{item}}</a>
+    </div>
+
+    <div class="col-xs-8">
+        <div class="well" ng-repeat="item in data.books | filter:categoryFilterFn"> 
+            <h3> <strong>{{item.name}}</strong> 
+                <span class="pull-right label label-primary"> {{item.price | currency}} </span> 
+            </h3>
+            <button ng-click="addBookToCart(item)" class="btn btn-success pull-right">Add Cart</button>
+            <span class="lead">{{item.description}}</span> 
+        </div> 
+    </div>
+</div>
