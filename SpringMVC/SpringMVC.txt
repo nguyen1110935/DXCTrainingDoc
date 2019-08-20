@@ -1,0 +1,124 @@
+﻿									Spring MVC
+btong@dxc.com
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+2019/03/15
+I. Java Servlet
+	+ Đây là thành phần chạy trên java
+	+ Để chạy đc thì phải có servlet Container (Servlet chỉ là code)
+	
+	Http server sẽ thực thi servlet program
+	
+	1. Servlet life cycle
+		init() ==> service() ==> destroy()
+			+ thiết lặp config trong init(). Nó chỉ đc  gọi 1 lần.
+			+ xl request trong server().
+			+ Tắt kết nối hay đóng gì đó trong destroy(). Nó chỉ đc gọi 1 lần.
+			
+	2. Form Data
+		Get method: truyền value lên url.
+		Post method: url vẫn giữ nguyên.
+		=> cả 2 điều gửi dl
+		
+	3. Relationship between Servlet Container and Servlet API
+		Servlet Container là vùng chưa Servlet API và servlet. có servlet sẽ kết nối đến Servlet API
+		
+	4. Structure and deployment
+		+ WEB-INF
+			|- classes
+			|- lib
+			|- web.xml
+	
+		+ The deployment descriptor
+			http://hostname:port/contextpath/: root (phần này tomcat sử lý đúng cái application đó). sau / đó sẽ là url-pattern
+	
+	5. Annotation
+		@WebServlet(name="us-sales", urlPatterns={"/myurl"}).
+			Nhược điểm khi chỉnh sửa url-pattern thì phải deloy lại và tìm kiếm nó khó hơn.
+	
+	6. Quy ước url-pattern
+		*. : sử lấy tất cả những file phía sau . vd .gif
+		/*: sau / cái gì cũng xử lý
+
+Config
+Tomcat: window -> preference -> server -> run environment
+Kiểm tra project đã có tomcat chưa: left -> properties -> build path -> libraries -> add library --> server runtime
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+2019/03/18
++ deloy: build file war = cách export rồi copy file đó vào apache-tomcat-8 -> webapp
+
++ Handling HTTP Request in an HttpServlet
+
++ support get data
+	* String getParameter(String paramName)
+	* String[] getParameterValues(String paramName)	
+	* Enumeration getParameterNames() trả về tất cả param theo kiểu for. Dùng để duyệt. return list name.
+
++ HttpServletRequest
+
++ ServletResponse
+	* PrintWriter
+	* ServletOutputStream
+
++ ServletConfig
+	<load-on-starup>1</load-on-starup>
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+2019/03/19
+Spring
++ Inversion of Control
+	* dependency: A phụ thuộc A và C
+		Class B; Class C;
+		Class A{
+			B b = new B();
+			C c = new C()
+		}
+	* Inject: B và C đã new trước đó rồi tiêm vào A
+		New B(); New C();
+		Class A{
+			private B b;
+			private C c;
+		}
++ Dependency Inject: dependency là quan hệ giữa 2 class. Inject là lấy class này ịn vô class kia.
++ POJOs là những class chỉ có variable và hàm get/set.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+Spring Data
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
